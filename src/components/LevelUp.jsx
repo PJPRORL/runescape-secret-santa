@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 const LevelUp = ({ onContinue }) => {
-    const audioRef = useRef(new Audio('assets/Agility_Level_Up!.ogg'));
+    const audioRef = useRef(new Audio(`${import.meta.env.BASE_URL}assets/Agility_Level_Up!.ogg`));
 
     useEffect(() => {
         audioRef.current.volume = 0.5;
@@ -23,7 +23,7 @@ const LevelUp = ({ onContinue }) => {
             <p style={{ fontSize: '24px', marginBottom: '20px' }}>You have reached Level 99 Agility!</p>
 
             <img
-                src="assets/99_agility_notification.webp"
+                src={`${import.meta.env.BASE_URL}assets/99_agility_notification.webp`}
                 alt="Level 99 Agility"
                 style={{ maxWidth: '80%', maxHeight: '60%', border: '4px solid gold', boxShadow: '0 0 30px gold' }}
             />

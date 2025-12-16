@@ -1,11 +1,11 @@
 import React from 'react';
 
 const locations = [
-    { id: 'gnome', name: 'Gnome Stronghold', img: 'assets/gnome_stronghold.png' },
-    { id: 'draynor', name: 'Draynor Village', img: 'assets/draynor.png' },
-    { id: 'canifis', name: 'Canifis', img: 'assets/canifis.png' },
-    { id: 'brimhaven', name: 'Brimhaven Arena', img: 'assets/brimhaven.png' },
-    { id: 'sepulchre', name: 'Hallowed Sepulchre', img: 'assets/hallowed_sepulchre.png' },
+    { id: 'gnome', name: 'Gnome Stronghold', img: `${import.meta.env.BASE_URL}assets/gnome_stronghold.png` },
+    { id: 'draynor', name: 'Draynor Village', img: `${import.meta.env.BASE_URL}assets/draynor.png` },
+    { id: 'canifis', name: 'Canifis', img: `${import.meta.env.BASE_URL}assets/canifis.png` },
+    { id: 'brimhaven', name: 'Brimhaven Arena', img: `${import.meta.env.BASE_URL}assets/brimhaven.png` },
+    { id: 'sepulchre', name: 'Hallowed Sepulchre', img: `${import.meta.env.BASE_URL}assets/hallowed_sepulchre.png` },
 ];
 
 const LocationSelection = ({ onSelect }) => {
