@@ -49,7 +49,8 @@ if (-not [string]::IsNullOrWhiteSpace($status)) {
 
 # 5. Push
 Write-Host "🚀 Pushing to GitHub..." -ForegroundColor Cyan
-git push -u origin main
+$branch = git branch --show-current
+git push -u origin $branch
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Successfully pushed to GitHub!" -ForegroundColor Green
     Write-Host "🌍 IF you have connected Netlify to this repo, your site is updating now." -ForegroundColor Green
