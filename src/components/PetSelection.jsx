@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 
 const pets = [
-    { id: 'squirrel', name: 'Giant Squirrel', img: `${import.meta.env.BASE_URL}assets/giant_squirrel.png`, desc: 'Snel, dol op eikels, houdt jouw tempo bij.' },
-    { id: 'bloodhound', name: 'Bloodhound', img: `${import.meta.env.BASE_URL}assets/Bloodhound.png`, desc: 'Speurneus, vindt de route, perfecte joggingpartner.' },
-    { id: 'beaver', name: 'Beaver', img: `${import.meta.env.BASE_URL}assets/Beaver.png`, desc: 'Harde werker, let op je houten meubels!' },
-    { id: 'tangleroot', name: 'Tangleroot', img: `${import.meta.env.BASE_URL}assets/Tangleroot.png`, desc: 'Natuurlijke groei, kijkt toe hoe je spieren groeien.' },
-    { id: 'golem', name: 'Rock Golem', img: `${import.meta.env.BASE_URL}assets/Rock_Golem.png`, desc: 'Traag maar onverwoestbaar. Inspiratie voor krachttraining.' },
-    { id: 'rift', name: 'Rift Guardian', img: `${import.meta.env.BASE_URL}assets/Rift_guardian.webp`, desc: 'Mystiek en zwevend. Pas op voor teleportaties.' },
+    { id: 'squirrel', name: 'Giant Squirrel', img: 'assets/giant_squirrel.png', desc: 'Snel, dol op eikels, houdt jouw tempo bij.' },
+    { id: 'bloodhound', name: 'Bloodhound', img: 'assets/Bloodhound.png', desc: 'Speurneus, vindt de route, perfecte joggingpartner.' },
+    { id: 'beaver', name: 'Beaver', img: 'assets/Beaver.png', desc: 'Harde werker, let op je houten meubels!' },
+    { id: 'tangleroot', name: 'Tangleroot', img: 'assets/Tangleroot.png', desc: 'Natuurlijke groei, kijkt toe hoe je spieren groeien.' },
+    { id: 'golem', name: 'Rock Golem', img: 'assets/Rock_Golem.png', desc: 'Traag maar onverwoestbaar. Inspiratie voor krachttraining.' },
+    { id: 'rift', name: 'Rift Guardian', img: 'assets/Rift_guardian.webp', desc: 'Mystiek en zwevend. Pas op voor teleportaties.' },
 ];
 
 const PetSelection = ({ userData, setUserData, onComplete }) => {
@@ -15,7 +15,7 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
     const [showPrank, setShowPrank] = useState(false);
     const [showReward, setShowReward] = useState(false);
 
-    const petSound = useRef(new Audio(`${import.meta.env.BASE_URL}assets/Getting_pet.ogg`));
+    const petSound = useRef(new Audio('assets/Getting_pet.ogg'));
 
     const nextPet = () => setCurrentIndex((prev) => (prev + 1) % pets.length);
     const prevPet = () => setCurrentIndex((prev) => (prev - 1 + pets.length) % pets.length);
@@ -45,7 +45,7 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
             <div className="rs-panel" style={{ textAlign: 'center' }}>
                 <h1>Reward Unlocked!</h1>
                 <div className="rs-panel-inner" style={{ margin: '20px' }}>
-                    <img src={`${import.meta.env.BASE_URL}assets/giant_squirrel.png`} style={{ maxWidth: '300px', height: 'auto' }} alt="Giant Squirrel" />
+                    <img src="assets/giant_squirrel.png" style={{ maxWidth: '300px', height: 'auto' }} alt="Giant Squirrel" />
                     <h2 style={{ color: 'var(--rs-orange)' }}>Giant Squirrel</h2>
                     <p>Gefeliciteerd, je hebt de Giant Squirrel ontvangen!</p>
                 </div>
@@ -85,7 +85,7 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
                     background: 'rgba(0,0,0,0.8)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000
                 }} onClick={() => setShowPrank(false)}>
                     <div style={{ position: 'relative', textAlign: 'center' }}>
-                        <img src={`${import.meta.env.BASE_URL}assets/vbucks.png`} alt="Fortnite Prank" style={{ maxWidth: '80vw', maxHeight: '80vh' }} />
+                        <img src="assets/vbucks.png" alt="Fortnite Prank" style={{ maxWidth: '80vw', maxHeight: '80vh' }} />
                         <div style={{ position: 'absolute', bottom: '10%', left: '0', width: '100%', textShadow: '2px 2px 4px black' }}>
                             <h2 style={{ color: 'white', background: 'rgba(0,0,0,0.5)', display: 'inline-block', padding: '10px' }}>
                                 Sorry, de gekozen pet zit vast in de 'God Wars Dungeon', claim je prijs nu.
