@@ -82,7 +82,7 @@ function App() {
               completedLocations: [...prev.completedLocations, prev.selectedLocation.name]
             }));
 
-            if (newCount < 2) {
+            if (newCount < 1) {
               setPhase('LOCATION_SELECTION');
             } else {
               setPhase('LEVEL_UP');

@@ -50,14 +50,14 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
 
     if (showReward) {
         return (
-            <div className="rs-panel" style={{ textAlign: 'center' }}>
+            <div className="rs-panel" style={{ textAlign: 'center', maxHeight: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <h1>Reward Unlocked!</h1>
-                <div className="rs-panel-inner" style={{ margin: '20px' }}>
-                    <img src={squirrelImg} style={{ maxWidth: '300px', height: 'auto' }} alt="Giant Squirrel" />
-                    <h2 style={{ color: 'var(--rs-orange)' }}>Giant Squirrel</h2>
-                    <p>Gefeliciteerd, je hebt de Giant Squirrel ontvangen!</p>
+                <div className="rs-panel-inner" style={{ margin: '10px', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <img src={squirrelImg} style={{ maxWidth: '60vw', maxHeight: '30vh', width: 'auto', height: 'auto' }} alt="Giant Squirrel" />
+                    <h2 style={{ color: 'var(--rs-orange)', fontSize: '1.5em', margin: '10px 0' }}>Giant Squirrel</h2>
+                    <p style={{ fontSize: '1em' }}>Gefeliciteerd, je hebt de Giant Squirrel ontvangen!</p>
                 </div>
-                <button onClick={onComplete}>Claim & View Leaderboard</button>
+                <button onClick={onComplete} style={{ marginTop: '10px' }}>Claim & View Leaderboard</button>
             </div>
         );
     }

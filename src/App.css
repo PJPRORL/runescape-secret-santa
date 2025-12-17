@@ -1,13 +1,12 @@
 .app-container {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  /* Add padding for mobile */
+  padding: 10px;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20h20v20H20V20zM0 0h20v20H0V0z' fill='%23191919' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 /* Mobile Responsive Fixes */
