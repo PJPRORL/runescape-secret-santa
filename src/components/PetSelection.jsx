@@ -68,11 +68,11 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
         <div className="rs-panel" style={{ position: 'relative' }}>
             <h2>Choose your Pet Reward</h2>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', margin: '20px 0' }}>
-                <button onClick={prevPet}>&lt;</button>
+            <div className="pet-selection-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', margin: '20px 0' }}>
+                <button onClick={prevPet} style={{ minWidth: '50px' }}>&lt;</button>
 
-                <div className="rs-panel-inner" style={{ width: '350px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <div style={{ width: '300px', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="rs-panel-inner" style={{ width: '100%', maxWidth: '350px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ width: '100%', maxWidth: '300px', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <img
                             src={currentPet.img}
                             alt={currentPet.name}
@@ -84,7 +84,7 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
                     <button onClick={handleSelect} style={{ marginTop: '10px', border: '2px solid var(--rs-green)' }}>Select This Pet</button>
                 </div>
 
-                <button onClick={nextPet}>&gt;</button>
+                <button onClick={nextPet} style={{ minWidth: '50px' }}>&gt;</button>
             </div>
 
             {showPrank && (

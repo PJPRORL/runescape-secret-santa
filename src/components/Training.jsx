@@ -58,7 +58,7 @@ const Training = ({ userData, setUserData, onComplete }) => {
                 {userData.selectedLocation?.name} - Obstacle {currentExerciseIndex + 1}/3
             </h2>
 
-            <div className="rs-panel-inner" style={{ margin: '40px auto', width: '300px', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
+            <div className="rs-panel-inner" style={{ margin: '40px auto', width: '100%', maxWidth: '300px', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
                 {/* Placeholder for animation */}
                 <h3 style={{ fontSize: '40px', color: 'var(--rs-green)' }}>
                     DO: {currentExercise}

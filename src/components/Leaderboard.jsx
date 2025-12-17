@@ -30,7 +30,7 @@ const Leaderboard = ({ userData, onPlayAgain, onStop }) => {
                 </div>
             </div>
 
-            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '20px' }}>
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
                 <button onClick={onPlayAgain}>Play Again</button>
                 <button onClick={onStop} style={{ color: 'var(--rs-red)' }}>Stop Workout</button>
             </div>
