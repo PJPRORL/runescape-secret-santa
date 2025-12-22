@@ -29,11 +29,27 @@ function App() {
   useEffect(() => {
     audioRef.current.loop = true;
     audioRef.current.volume = 0.3; // Set a reasonable volume
-    audioRef.current.play().catch(e => console.log("Autoplay blocked:", e));
+
+    const playAudio = () => {
+      audioRef.current.play().then(() => {
+        // Autoplay started!
+        // Remove listener if it worked
+        document.removeEventListener('click', playAudio);
+      }).catch(e => {
+        console.log("Autoplay blocked, waiting for interaction:", e);
+      });
+    };
+
+    // Try to play immediately
+    playAudio();
+
+    // Also try on any click (to handle browser autoplay policies)
+    document.addEventListener('click', playAudio);
 
     // Cleanup
     return () => {
       audioRef.current.pause();
+      document.removeEventListener('click', playAudio);
     };
   }, []);
 
