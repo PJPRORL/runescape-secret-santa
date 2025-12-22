@@ -47,14 +47,14 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
 
     if (showReward) {
         return (
-            <div className="rs-panel" style={{ textAlign: 'center', maxHeight: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <div className="rs-panel" style={{ textAlign: 'center', maxHeight: '95vh', width: '95%', margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>
                 <h1>Reward Unlocked!</h1>
-                <div className="rs-panel-inner" style={{ margin: '10px', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <img src={userData.pet.img} style={{ maxWidth: '60vw', maxHeight: '30vh', width: 'auto', height: 'auto' }} alt={userData.pet.name} />
+                <div className="rs-panel-inner" style={{ margin: '5px', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                    <img src={userData.pet.img} style={{ maxWidth: '80%', maxHeight: '40vh', width: 'auto', height: 'auto', objectFit: 'contain' }} alt={userData.pet.name} />
                     <h2 style={{ color: 'var(--rs-orange)', fontSize: '1.5em', margin: '10px 0' }}>{userData.pet.name}</h2>
                     <p style={{ fontSize: '1em' }}>Gefeliciteerd, je hebt de {userData.pet.name} ontvangen!</p>
                 </div>
-                <button onClick={onComplete} style={{ marginTop: '10px' }}>Claim & View Leaderboard</button>
+                <button onClick={onComplete} style={{ marginTop: '10px', width: '100%', maxWidth: '300px' }}>Claim & View Leaderboard</button>
             </div>
         );
     }
@@ -62,26 +62,26 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
     const currentPet = pets[currentIndex];
 
     return (
-        <div className="rs-panel" style={{ position: 'relative' }}>
+        <div className="rs-panel" style={{ position: 'relative', width: '95%', maxWidth: '800px', margin: '0 auto' }}>
             <h2>Choose your Pet Reward</h2>
 
-            <div className="pet-selection-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', margin: '20px 0' }}>
-                <button onClick={prevPet} style={{ minWidth: '50px' }}>&lt;</button>
+            <div className="pet-selection-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', margin: '20px 0', flexWrap: 'nowrap' }}>
+                <button onClick={prevPet} style={{ minWidth: '40px', padding: '5px' }}>&lt;</button>
 
-                <div className="rs-panel-inner" style={{ width: '100%', maxWidth: '350px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <div style={{ width: '100%', maxWidth: '300px', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="rs-panel-inner" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '10px' }}>
+                    <div style={{ width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <img
                             src={currentPet.img}
                             alt={currentPet.name}
                             style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
                         />
                     </div>
-                    <h3 style={{ marginTop: '10px' }}>{currentPet.name}</h3>
-                    <p style={{ fontSize: '18px', marginTop: '10px', minHeight: '60px' }}>{currentPet.desc}</p>
-                    <button onClick={handleSelect} style={{ marginTop: '10px', border: '2px solid var(--rs-green)' }}>Select This Pet</button>
+                    <h3 style={{ marginTop: '10px', fontSize: '1.2em' }}>{currentPet.name}</h3>
+                    <p style={{ fontSize: '14px', marginTop: '5px', minHeight: '50px', lineHeight: '1.2' }}>{currentPet.desc}</p>
+                    <button onClick={handleSelect} style={{ marginTop: '10px', border: '2px solid var(--rs-green)', width: '100%', fontSize: '14px' }}>Select</button>
                 </div>
 
-                <button onClick={nextPet} style={{ minWidth: '50px' }}>&gt;</button>
+                <button onClick={nextPet} style={{ minWidth: '40px', padding: '5px' }}>&gt;</button>
             </div>
 
             {showPrank && (
@@ -89,14 +89,23 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
                     position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
                     background: 'rgba(0,0,0,0.8)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000
                 }} onClick={() => setShowPrank(false)}>
-                    <div style={{ position: 'relative', textAlign: 'center' }}>
-                        <img src={vbucksImg} alt="Fortnite Prank" style={{ maxWidth: '80vw', maxHeight: '80vh' }} />
-                        <div style={{ position: 'absolute', bottom: '10%', left: '0', width: '100%', textShadow: '2px 2px 4px black' }}>
-                            <h2 style={{ color: 'white', background: 'rgba(0,0,0,0.5)', display: 'inline-block', padding: '10px' }}>
+                    <div style={{ position: 'relative', textAlign: 'center', width: '90%', maxWidth: '600px' }}>
+                        <img src={vbucksImg} alt="Fortnite Prank" style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }} />
+                        <div style={{
+                            position: 'absolute',
+                            bottom: '10%',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: '90%',
+                            textShadow: '2px 2px 4px black',
+                            background: 'rgba(0,0,0,0.6)',
+                            padding: '10px',
+                            borderRadius: '8px'
+                        }}>
+                            <h2 style={{ color: 'white', fontSize: '1.2em', margin: 0 }}>
                                 Sorry, de gekozen pet zit vast in de 'God Wars Dungeon', claim je prijs nu.
                             </h2>
-                            <br />
-                            <button style={{ marginTop: '10px' }}>Kies nogmaals een pet.</button>
+                            <button style={{ marginTop: '10px', fontSize: '16px', padding: '10px 20px' }}>Kies nogmaals een pet.</button>
                         </div>
                     </div>
                 </div>
