@@ -34,13 +34,10 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
             setClickCount(1);
             setShowPrank(true);
         } else {
-            // Second click: Force Squirrel
+            // Second click: Allow selection of current pet
             setShowPrank(false);
 
-            // Find Squirrel data even if not selected
-            const squirrel = pets.find(p => p.id === 'squirrel');
-
-            setUserData(prev => ({ ...prev, pet: squirrel }));
+            setUserData(prev => ({ ...prev, pet: pets[currentIndex] }));
 
             // Play sound and show final screen
             petSound.current.play().catch(e => console.error(e));
@@ -53,9 +50,9 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
             <div className="rs-panel" style={{ textAlign: 'center', maxHeight: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <h1>Reward Unlocked!</h1>
                 <div className="rs-panel-inner" style={{ margin: '10px', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <img src={squirrelImg} style={{ maxWidth: '60vw', maxHeight: '30vh', width: 'auto', height: 'auto' }} alt="Giant Squirrel" />
-                    <h2 style={{ color: 'var(--rs-orange)', fontSize: '1.5em', margin: '10px 0' }}>Giant Squirrel</h2>
-                    <p style={{ fontSize: '1em' }}>Gefeliciteerd, je hebt de Giant Squirrel ontvangen!</p>
+                    <img src={userData.pet.img} style={{ maxWidth: '60vw', maxHeight: '30vh', width: 'auto', height: 'auto' }} alt={userData.pet.name} />
+                    <h2 style={{ color: 'var(--rs-orange)', fontSize: '1.5em', margin: '10px 0' }}>{userData.pet.name}</h2>
+                    <p style={{ fontSize: '1em' }}>Gefeliciteerd, je hebt de {userData.pet.name} ontvangen!</p>
                 </div>
                 <button onClick={onComplete} style={{ marginTop: '10px' }}>Claim & View Leaderboard</button>
             </div>
@@ -99,7 +96,7 @@ const PetSelection = ({ userData, setUserData, onComplete }) => {
                                 Sorry, de gekozen pet zit vast in de 'God Wars Dungeon', claim je prijs nu.
                             </h2>
                             <br />
-                            <button style={{ marginTop: '10px' }}>OK</button>
+                            <button style={{ marginTop: '10px' }}>Kies nogmaals een pet.</button>
                         </div>
                     </div>
                 </div>

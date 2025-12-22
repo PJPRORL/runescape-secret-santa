@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import xpSound from '../assets/Blood_Barrage.ogg.mp3';
 
 const exercisesList = [
     'Push-ups', 'Jumping Jacks', 'Squats',
@@ -18,6 +19,11 @@ const Training = ({ userData, setUserData, onComplete }) => {
     }, []);
 
     const handleExerciseComplete = () => {
+        // Play sound
+        const audio = new Audio(xpSound);
+        audio.volume = 0.5; // Optional: Adjust volume if needed
+        audio.play().catch(e => console.error("Audio play failed:", e));
+
         // Trigger XP drop
         setShowXpDrop(true);
 

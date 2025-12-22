@@ -9,6 +9,8 @@ import Leaderboard from './components/Leaderboard';
 import StopScreen from './components/StopScreen';
 import './App.css';
 
+import bgMusicFile from './assets/Adventure_(v1).ogg.mp3';
+
 function App() {
   const [phase, setPhase] = useState('START');
   const [userData, setUserData] = useState({
@@ -22,7 +24,52 @@ function App() {
     pet: null
   });
 
+  const audioRef = React.useRef(new Audio(bgMusicFile));
+
+  useEffect(() => {
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.3; // Set a reasonable volume
+    audioRef.current.play().catch(e => console.log("Autoplay blocked:", e));
+
+    // Cleanup
+    return () => {
+      audioRef.current.pause();
+    };
+  }, []);
+
+  useEffect(() => {
+    // Pause music when in Level Up screen or when muted
+    if (phase === 'LEVEL_UP') {
+      audioRef.current.pause();
+    }
+    // Resume music when not in Level Up screen (and ensure it's playing if it was paused)
+    else if (audioRef.current.paused && !audioRef.current.muted) { // Check muted state
+      audioRef.current.play().catch(e => console.error("Resume failed:", e));
+    }
+  }, [phase]);
+
+  const [isMuted, setIsMuted] = useState(false);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  const toggleMute = () => {
+    setIsMuted(prev => !prev);
+  };
+
+
+  const restartMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(e => console.error("Play failed:", e));
+    }
+  };
+
   const resetGame = () => {
+    restartMusic();
     setUserData({
       name: '',
       level: 98,
@@ -38,6 +85,7 @@ function App() {
 
   const stopWorkout = () => {
     if (window.confirm('Weet je zeker dat je wilt stoppen?')) {
+      restartMusic();
       setPhase('STOPPED');
     }
   };
@@ -117,6 +165,31 @@ function App() {
       )}
 
       {phase === 'STOPPED' && <StopScreen onHome={() => setPhase('START')} />}
+
+      {/* Background Music Mute Button */}
+      <button
+        onClick={toggleMute}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 9999,
+          background: 'rgba(0,0,0,0.6)',
+          color: 'white',
+          border: '2px solid white',
+          borderRadius: '50%',
+          width: '50px',
+          height: '50px',
+          fontSize: '24px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+        title={isMuted ? "Unmute Music" : "Mute Music"}
+      >
+        {isMuted ? "🔇" : "🔊"}
+      </button>
 
       {/* Background Music or Global Elements could go here */}
     </div>
